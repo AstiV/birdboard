@@ -11,5 +11,5 @@ class Project extends Model
 
     protected $guarded = [];
 
-    // updated_atprotected $fillable = ['title', 'description', 'updated_at', 'created_at'];
+    // protected $fillable = ['title', 'description', 'updated_at', 'created_at'];
 }
