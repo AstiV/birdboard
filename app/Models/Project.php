@@ -10,6 +10,4 @@ class Project extends Model
     use HasFactory;
 
     protected $guarded = [];
-
-    // protected $fillable = ['title', 'description', 'updated_at', 'created_at'];
 }
