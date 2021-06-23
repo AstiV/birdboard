@@ -4,7 +4,9 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
+
 
 use App\Models\Project;
 
@@ -65,5 +67,19 @@ class ProjectsTest extends TestCase
         $attributes = Project::factory()->raw(['description' => '']);
 
         $this->post('/projects', $attributes)->assertSessionHasErrors('description');
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function test_a_project_requires_an_owner()
+    {
+        // $this->withoutExceptionHandling();
+
+        $attributes = Project::factory()->raw(['owner_id' => null]);
+
+        $this->post('/projects', $attributes)->assertSessionHasErrors('owner_id');
     }
 }

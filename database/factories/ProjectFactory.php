@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Projects;
+use App\Models\User;
 
 class ProjectFactory extends Factory
 {
@@ -24,7 +24,10 @@ class ProjectFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'description'  => $this->faker->paragraph()
+            'description'  => $this->faker->paragraph(),
+            'owner_id' => function () {
+                return User::factory()->create()->id;
+            }
         ];
     }
 }
